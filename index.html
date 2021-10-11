@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!--Navbar-->
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="index.html" class="nav-link px-2 text-secondary">Ingreso de alumnos</a></li>
+              <li><a href="/html/aprobados.html" class="nav-link px-2 text-white">Alumnos Aprobados</a></li>
+              <li><a href="/html/reprobados.html" class="nav-link px-2 text-white">Alumnos Reprobados</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
     <!--Explicacion del simulador-->
         <p>El profesor ingresará nombre y apellidos de un alumno, luego todas las notas<br> se promediará las notas, y en caso de que el promedio sea mayor o igual a 6, el alumno pasara a estado APROBADO, caso contrario REPROBADO.</p>
         <div class="container mt-4">
@@ -43,7 +55,7 @@
                 </div>
             </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <!-- Tabla que se modificará por DOM-->
                 <table class="table">
                     <thead>

@@ -52,15 +52,15 @@ function ingresoDatos(e){
       }else{
         estado = "Reprobado";
       }
-    id++;
-    let alumnoActual = new Alumno(id, nombreAlumno, apellidoAlumno, notaMatematica, notaIngles, notaEdFisica, estado, notaFinal);
-    listadoAlumnos.push(alumnoActual);
-    sessionStorage.setItem(alumnoActual.id, JSON.stringify(alumnoActual));
-    escribirTabla(alumnoActual.id);
-    totalAlumnos++;
-    miForm.trigger("reset");
-    //carga un nuevo total
-    let tarjeta = $(".card-body")
+      let alumnoActual = new Alumno(id, nombreAlumno, apellidoAlumno, notaMatematica, notaIngles, notaEdFisica, estado, notaFinal);
+      listadoAlumnos.push(alumnoActual);
+      sessionStorage.setItem(alumnoActual.id, JSON.stringify(alumnoActual));
+      escribirTabla(alumnoActual.id);
+      totalAlumnos++;
+      id++;
+      miForm.trigger("reset");
+      //carga un nuevo total
+      let tarjeta = $(".card-body")
     tarjeta.append(`<span id="totalAlumnos">El total de alumnos ingresados es: ${totalAlumnos}</span>`)
 } 
 
@@ -79,7 +79,7 @@ function escribirTabla(idActual){
   
        
   let contenido = $("#tbody");
-  contenido.append(`<tr>
+  contenido.append(`<tr id="${idActual}">
   <td>${nombre}</td>
   <td>${apellido}</td>
   <td>${notaMate}</td>
@@ -87,10 +87,17 @@ function escribirTabla(idActual){
   <td>${notaEdFis}</td>
   <td>${notaFinal}</td>
   <td>${estado}</td>
-  <td><button id="btn${idActual}" class="btnEliminar"> X</button>
+  <td><button class="btnEliminar"> X</button>
 
   </tr>`);
-  
+ 
+  $(".btnEliminar").click(function (e) { 
+    let filaSeleccionada = $(e.target).parent().parent();
+    filaSeleccionada.fadeOut(1000);
+    let idaEliminar = filaSeleccionada.attr("id");
+    eliminarAlumno(idaEliminar);
+});
+
 }
 
 
@@ -112,18 +119,15 @@ function filtradoReprobados(){
     }
 }
 
-
-/* NO ESTA EN FUNCIONAMIENTO:
-
-//Eliminar Alumno/Fila
-const btnEliminar = $(".btnEliminar");
-btnEliminar.click((e) => console.log(e.target.id));
-
-$(`.btnEliminar`).click(eliminarFila());
-
-function eliminarFila(){
-  let alumno = JSON.parse(sessionStorage.getItem());  
-  console.log(`El alumno es ${alumno.nombre}`)
-  
+//eliminar alumno de Storage y de array
+function eliminarAlumno(idAlumno){
+  for (let i = 0; i < listadoAlumnos.length; i++){
+    if(listadoAlumnos[i]["id"] == idAlumno){
+      //elimino del Array
+      listadoAlumnos.splice(i, 1);
+      //Elimino del session storage
+      sessionStorage.removeItem(idAlumno);
+    }
+  }
 }
-*/
+

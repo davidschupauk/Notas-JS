@@ -1,4 +1,28 @@
+.mt-4{
+    margin: 50px;
+}
 .btnEliminar{
     background-color: red;
     color: black;
+}
+
+p{
+    margin: 50px;
+    font-size: 25px;
+}
+
+h1{ 
+    margin: 50px;
+    font-size: 25px;
+}
+
+.d-flex{
+        font-size: 25px;
+        align-items: center; 
+        display: flex;
+}
+
+li{ 
+    margin-right: 15px;
+    margin-left: 15px;
 }
