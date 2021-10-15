@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reprobados</title>
+    <title>Profesores</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -16,39 +16,25 @@
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               <li><a href="../index.html" class="nav-link px-2 text-white">Ingreso de alumnos</a></li>
               <li><a href="aprobados.html" class="nav-link px-2 text-white">Alumnos Aprobados</a></li>
-              <li><a href="reprobados.html" class="nav-link px-2 text-secondary">Alumnos Reprobados</a></li>
-              <li><a href="profesores.html" class="nav-link px-2 text-white">Profesores</a></li>
+              <li><a href="reprobados.html" class="nav-link px-2 text-white">Alumnos Reprobados</a></li>
+              <li><a href="profesores.html" class="nav-link px-2 text-secondary">Profesores</a></li>
             </ul>
           </div>
         </div>
       </header>
-    <!--Explicacion del simulador-->
-        <h1>Todos los alumnos Reprobados :(</h1>
+        <h1>Listado de Profesores autorizados a ingresar alumnos</h1>
         <div class="container mt-4">
             <div class="col-md-12">
-                <!-- Tabla que se modificará por DOM-->
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Legajo</th>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Apellido</th>
-                            <th scope="col">Matematica</th>
-                            <th scope="col">Ingles</th>
-                            <th scope="col">Ed Fisica</th>
-                            <th scope="col">Promedio</th>
-                        </tr>
-                    </thead>
-                    <!--Lo que quiero modificar con DOM-->
-                    <tbody id="tbodyRP">
-                    
-                    </tbody>
-                </table>
+                <!-- UL de profesores, agregados por DOM-->
+                <ul id ="listadoProfesores">
+
+                </ul>
             </div>
         </div>
+        
         <!--Jquery-->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <!--Js-->
-        <script src="../app/JsReprobados.js"></script>
+        <script src="../app/JsProfesores.js"></script>
     </body>
-    </html>
+</html>

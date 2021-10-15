@@ -1,0 +1,17 @@
+[
+    {
+      "profesorId": 1,
+      "nombre": "Silvio",
+      "apellido": "Romero"
+    },
+    {
+      "profesorId": 2,
+      "nombre": "Lucas",
+      "apellido": "Gonzalez"
+    },
+    {
+      "profesorId": 3,
+      "nombre": "Sebastian",
+      "apellido": "Sosa"
+    }
+]

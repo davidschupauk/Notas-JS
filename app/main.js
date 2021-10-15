@@ -1,4 +1,5 @@
 //Declaraciones
+let legajoAlumno;
 let nombreAlumno;
 let apellidoAlumno;
 let notaMatematica;
@@ -17,8 +18,8 @@ $(()=> { console.log("El DOM esta listo");});
 
 //Clase Alumno
 class Alumno{
-    constructor(id, nombre, apellido, notaMate, notaIng, notaEdFis, estado, notaFinal){
-    this.id = id;
+    constructor(legajo, nombre, apellido, notaMate, notaIng, notaEdFis, estado, notaFinal){
+    this.legajo = legajo;
     this.nombre = nombre;
     this.apellido = apellido;
     this.notaMate = notaMate;
@@ -39,6 +40,7 @@ function ingresoDatos(e){
     //elimina el total
     let spanAlumnos = $("#totalAlumnos");
     spanAlumnos.remove(); 
+    legajoAlumno = document.getElementById("legajoAlumno").value;
     nombreAlumno = document.getElementById("nombreAlumno").value;
     apellidoAlumno = document.getElementById("apellidoAlumno").value;
     notaMatematica = parseInt(document.getElementById("notaMatematica").value); 
@@ -52,10 +54,10 @@ function ingresoDatos(e){
       }else{
         estado = "Reprobado";
       }
-      let alumnoActual = new Alumno(id, nombreAlumno, apellidoAlumno, notaMatematica, notaIngles, notaEdFisica, estado, notaFinal);
+      let alumnoActual = new Alumno(legajoAlumno, nombreAlumno, apellidoAlumno, notaMatematica, notaIngles, notaEdFisica, estado, notaFinal);
       listadoAlumnos.push(alumnoActual);
-      sessionStorage.setItem(alumnoActual.id, JSON.stringify(alumnoActual));
-      escribirTabla(alumnoActual.id);
+      sessionStorage.setItem(alumnoActual.legajo, JSON.stringify(alumnoActual));
+      escribirTabla(alumnoActual.legajo);
       totalAlumnos++;
       id++;
       miForm.trigger("reset");
@@ -66,9 +68,9 @@ function ingresoDatos(e){
 
 
 //traer del localStorage y ponerlo modificando el DOM
-function escribirTabla(idActual){
+function escribirTabla(legajoActual){
   
-  let alumno = JSON.parse(sessionStorage.getItem(idActual));    
+  let alumno = JSON.parse(sessionStorage.getItem(legajoActual));   
   let nombre = alumno.nombre;
   let apellido = alumno.apellido;
   let notaMate = alumno.notaMate;
@@ -79,7 +81,8 @@ function escribirTabla(idActual){
   
        
   let contenido = $("#tbody");
-  contenido.append(`<tr id="${idActual}">
+  contenido.append(`<tr id="${legajoActual}">
+  <td>${legajoActual}</td>
   <td>${nombre}</td>
   <td>${apellido}</td>
   <td>${notaMate}</td>
@@ -100,34 +103,14 @@ function escribirTabla(idActual){
 
 }
 
-
-//filtrado segun estado, ~aun no lo aplico~
-
-function filtradoAprobados(){
-  const alumnosAprobados = listadoAlumnos.filter(alumno => alumno["estado"] == "Aprobado");
-  console.log("APROBADOS");
-  for(const apro of alumnosAprobados){
-    console.log(apro.nombre + " " + apro.apellido + " Con un: "  + apro.notaFinal);
-  }
-}  
-
-function filtradoReprobados(){
-  const alumnosReprobados = listadoAlumnos.filter(alumno => alumno["estado"] == "Reprobado");
-  console.log("REPROBADOS");
-    for(const repro of alumnosReprobados){
-      console.log(repro.nombre + " " + repro.apellido + " Con un: "  + repro.notaFinal);
-    }
-}
-
 //eliminar alumno de Storage y de array
-function eliminarAlumno(idAlumno){
+function eliminarAlumno(legajoActual){
   for (let i = 0; i < listadoAlumnos.length; i++){
-    if(listadoAlumnos[i]["id"] == idAlumno){
+    if(listadoAlumnos[i]["legajo"] == legajoActual){
       //elimino del Array
       listadoAlumnos.splice(i, 1);
       //Elimino del session storage
-      sessionStorage.removeItem(idAlumno);
+      sessionStorage.removeItem(legajoActual);
     }
   }
 }
-

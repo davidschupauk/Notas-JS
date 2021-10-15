@@ -13,7 +13,7 @@ p{
 
 h1{ 
     margin: 50px;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 .d-flex{
@@ -25,4 +25,8 @@ h1{
 li{ 
     margin-right: 15px;
     margin-left: 15px;
+}
+
+.itemProf{
+    font-size: 25px;
 }
