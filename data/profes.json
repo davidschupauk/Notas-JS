@@ -13,5 +13,25 @@
       "profesorId": 3,
       "nombre": "Sebastian",
       "apellido": "Sosa"
+    },
+    {
+      "profesorId": 4,
+      "nombre": "Lucas",
+      "apellido": "Romero"
+    },
+    {
+      "profesorId": 5,
+      "nombre": "Fabricio",
+      "apellido": "Bustos"
+    },
+    {
+      "profesorId": 6,
+      "nombre": "Juan Manuel",
+      "apellido": "Insaurralde"
+    },
+    {
+      "profesorId": 7,
+      "nombre": "Sergio",
+      "apellido": "Barreto"
     }
 ]

@@ -90,17 +90,52 @@ function escribirTabla(legajoActual){
   <td>${notaEdFis}</td>
   <td>${notaFinal}</td>
   <td>${estado}</td>
-  <td><button class="btnEliminar"> X</button>
+  <td><button class="btnEliminar"> X</button></td>
 
   </tr>`);
  
   $(".btnEliminar").click(function (e) { 
+    console.log("a");
     let filaSeleccionada = $(e.target).parent().parent();
     filaSeleccionada.fadeOut(1000);
-    let idaEliminar = filaSeleccionada.attr("id");
-    eliminarAlumno(idaEliminar);
+    let legajoActualEliminar = filaSeleccionada.attr("id");
+    eliminarAlumno(legajoActualEliminar);
 });
 
+}
+
+
+
+window.onload = cargaPagina();
+
+function cargaPagina() { 
+  for(let i=0; i < sessionStorage.length; i++){
+    let clave = sessionStorage.key(i);
+    let alumno = JSON.parse(sessionStorage.getItem(clave));
+    let contenido = $("#tbody");
+    if(alumno.estado == "Aprobado" || alumno.estado == "Reprobado"){
+      contenido.append(`<tr id="${alumno.legajo}">
+      <td>${alumno.legajo}</td>
+      <td>${alumno.nombre}</td>
+      <td>${alumno.apellido}</td>
+      <td>${alumno.notaMate}</td>
+      <td>${alumno.notaIng}</td>
+      <td>${alumno.notaEdFis}</td>
+      <td>${alumno.notaFinal}</td>
+      <td>${alumno.estado}</td>
+      <td><button class="btnEliminar"> X</button></td>
+      </tr>`);
+      listadoAlumnos.push(alumno);
+
+      $(".btnEliminar").click(function (e) { 
+        let filaSeleccionada = $(e.target).parent().parent();
+        filaSeleccionada.fadeOut(1000);
+        let legajoActualEliminar = filaSeleccionada.attr("id");
+        eliminarAlumno(legajoActualEliminar);
+      });
+    }
+    
+  }
 }
 
 //eliminar alumno de Storage y de array
@@ -109,7 +144,7 @@ function eliminarAlumno(legajoActual){
     if(listadoAlumnos[i]["legajo"] == legajoActual){
       //elimino del Array
       listadoAlumnos.splice(i, 1);
-      //Elimino del session storage
+      //Elimino del session storage, no estaria eliminando lo que se carga con la pagina
       sessionStorage.removeItem(legajoActual);
     }
   }
