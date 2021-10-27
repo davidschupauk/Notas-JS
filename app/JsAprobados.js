@@ -1,9 +1,9 @@
 window.onload = cargaPagina();
 
 function cargaPagina() { 
-    for(let i=0; i < sessionStorage.length; i++){
-      let clave = sessionStorage.key(i);
-      let alumno = JSON.parse(sessionStorage.getItem(clave));
+    for(let i=0; i < localStorage.length; i++){
+      let clave = localStorage.key(i);
+      let alumno = JSON.parse(localStorage.getItem(clave));
       if(alumno.estado == "Aprobado"){
         let contenido = $("#tbodyAP");
         contenido.append(`<tr>
